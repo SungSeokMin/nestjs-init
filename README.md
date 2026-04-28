@@ -6,7 +6,7 @@ NestJS 프로젝트를 시작할 때마다 반복되는 초기 셋팅(Database, 
 
 | 항목 | 내용 |
 |------|------|
-| **Database** | TypeORM + MySQL 8, Migration 지원 |
+| **Database** | TypeORM + PostgreSQL 16, Migration 지원 |
 | **Logging** | Winston + nest-winston, 개발/운영 포맷 분리 |
 | **Config** | `@nestjs/config` + 환경별 `.env` 파일 분기 |
 | **Auth** | JWT Bearer Token 미들웨어, Guard |
@@ -14,7 +14,7 @@ NestJS 프로젝트를 시작할 때마다 반복되는 초기 셋팅(Database, 
 | **Validation** | `class-validator` + `class-transformer` 글로벌 파이프 |
 | **Error Handling** | 글로벌 HttpExceptionFilter, BusinessException |
 | **Transaction** | TransactionInterceptor (자동 커밋/롤백) |
-| **Docker** | Multi-stage Dockerfile + docker-compose (MySQL) |
+| **Docker** | Multi-stage Dockerfile + docker-compose (PostgreSQL) |
 | **CI/CD** | GitHub Actions (CI: Build/Test, CD: Docker Hub + EC2 배포) |
 
 ---
@@ -91,7 +91,7 @@ cp .env.example .env.local
 
 ```bash
 docker-compose up -d
-# MySQL이 localhost:3307로 실행됩니다
+# PostgreSQL이 localhost:5432로 실행됩니다
 ```
 
 ### 5. 마이그레이션 실행
@@ -127,7 +127,7 @@ pnpm start:dev
 | `NODE_ENV` | 실행 환경 | `development` |
 | `PORT` | 서버 포트 | `3000` |
 | `DB_HOST` | DB 호스트 | `localhost` |
-| `DB_PORT` | DB 포트 | `3306` |
+| `DB_PORT` | DB 포트 | `5432` |
 | `DB_USERNAME` | DB 사용자명 | `nestjs` |
 | `DB_PASSWORD` | DB 비밀번호 | `nestjs!@` |
 | `DB_DATABASE` | DB 이름 | `nestjs_db` |
@@ -291,7 +291,7 @@ nest g service modules/post
 - **Framework**: NestJS 11
 - **Language**: TypeScript 5
 - **ORM**: TypeORM 0.3
-- **Database**: MySQL 8
+- **Database**: PostgreSQL 16
 - **Logging**: Winston + nest-winston
 - **Auth**: JWT (@nestjs/jwt)
 - **Docs**: Swagger (@nestjs/swagger)
